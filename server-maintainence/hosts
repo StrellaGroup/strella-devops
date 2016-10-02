@@ -1,0 +1,4 @@
+[all]
+
+172.17.0.2 	port=22 	user=root
+# private_key_file=/home/lowks/.ssh/id_rsa

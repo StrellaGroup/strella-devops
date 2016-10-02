@@ -1,0 +1,10 @@
+---
+# tasks file for server-maintainence
+- hosts: all
+  tasks:
+    - name: Installs prerequisite to perform upgrade
+      package: name=aptitude state=latest
+    - name: Updates servers
+      apt: update_cache=yes
+    - name: upgrade the servers
+      apt: upgrade=safe
