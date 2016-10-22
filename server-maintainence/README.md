@@ -27,6 +27,13 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
          - { role: username.rolename, x: 42 }
 
+Example of Running Playbook
+---------------------------
+
+Sample command of running command:
+
+    - ansible-playbook -vvvvv -i hosts --ask-pass tasks/main.yml -u strella -c paramiko -K
+
 License
 -------
 

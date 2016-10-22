@@ -1,10 +1,53 @@
 ---
 # tasks file for server-maintainence
 - hosts: all
+  gather_facts: false
+
   tasks:
+    - name: Install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      become: yes
+      become_user: root
+
+    - name: Force gather facts
+      action: setup
+
     - name: Installs prerequisite to perform upgrade
       package: name=aptitude state=latest
+      become: yes
+
     - name: Updates servers
       apt: update_cache=yes
-    - name: upgrade the servers
+      become: yes
+
+    - name: Upgrade the servers
       apt: upgrade=safe
+      become: yes
+
+    - name: Clean up old installs if any.
+      file: path=/home/frappe/bench-repo state=absent
+
+    - name: Clean up old installs if any.
+      file: path=/home/frappe/frappe-bench state=absent
+
+    - name: Install frappe-bench (prereq)
+      package: name={{ item }} update_cache=yes
+      with_items:
+        - ca-certificates
+        - sudo
+        - cron
+        - supervisor
+        - npm
+      become: yes
+
+    - name: Download setup script
+      get_url:
+        url: https://raw.githubusercontent.com/frappe/bench/master/install_scripts/setup_frappe.sh
+        dest: /tmp/setup_frappe.sh
+        mode: 0755
+
+    - name: Run setup script
+      raw: bash /tmp/setup_frappe.sh --setup-production
+      # async: 300
+      # poll: 0
+      become: yes
