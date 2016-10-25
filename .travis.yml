@@ -11,4 +11,4 @@ install:
   # - pip install selenium nose
  
 script:
-  - cd server-maintainence && ansible-playbook -i tests/hosts tasks/main.yml --check
+  - cd server-maintainence && ansible-playbook -i tests/hosts tasks/main.yml --check --connection=local
