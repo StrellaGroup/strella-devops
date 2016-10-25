@@ -11,4 +11,4 @@ install:
   # - pip install selenium nose
  
 script:
-  - cd server-maintenance && ansible-playbook tasks/main.yml --check
+  - cd server-maintainence && ansible-playbook tasks/main.yml --check
