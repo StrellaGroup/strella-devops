@@ -4,6 +4,10 @@
   gather_facts: false
 
   tasks:
+    - name: dpkg --configure -a
+      raw: dpkg --configure -a
+      become: yes
+      
     - name: Install python 2
       raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
       become: yes
@@ -60,10 +64,6 @@
  
     - name: cp /tmp/tmp/install.py -f /tmp
       raw: cp /tmp/tmp/install.py -f /tmp
-      become: yes
-
-    - name: dpkg --configure -a
-      raw: dpkg --configure -a
       become: yes
 
     - name: sudo apt-get --assume-yes install python-minimal
