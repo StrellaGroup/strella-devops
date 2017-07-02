@@ -9,6 +9,11 @@ python: 2.7
 install:
 - pip install ansible==2.0.0.2
   # - pip install selenium nose
- 
+
 script:
   - cd server-maintainence && ansible-playbook -i tests/hosts tasks/main.yml --list-task --check --connection=local
+
+  notifications:
+    email:
+      - kianseong@gmail.com
+      - javier.wong@strellagroup.com
