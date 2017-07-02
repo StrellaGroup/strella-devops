@@ -67,5 +67,5 @@
       become: yes
 
     - name: installation
-      raw: python install.py --production --user strella --mysql_root_password Pass@321 --admin_password Pass@321 --verbose
+      raw: python /tmp/install.py --production --user strella --mysql_root_password Pass@321 --admin_password Pass@321 --verbose
       become: yes
