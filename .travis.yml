@@ -13,7 +13,7 @@ install:
 script:
   - cd server-maintainence && ansible-playbook -i tests/hosts tasks/main.yml --list-task --check --connection=local
 
-  notifications:
-    email:
-      - kianseong@gmail.com
-      - javier.wong@strellagroup.com
+notifications:
+  email:
+    - kianseong@gmail.com
+    - javier.wong@strellagroup.com
