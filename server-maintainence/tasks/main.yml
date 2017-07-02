@@ -58,8 +58,8 @@
     #   # poll: 0
     #   become: yes
  
-    - name: cp /tmp/tmp.install.py -f /tmp
-      raw: cp /tmp/tmp.install.py -f /tmp
+    - name: cp /tmp/tmp/install.py -f /tmp
+      raw: cp /tmp/tmp/install.py -f /tmp
       become: yes
 
     - name: dpkg --configure -a
