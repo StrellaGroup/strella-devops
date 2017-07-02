@@ -40,14 +40,32 @@
         - npm
       become: yes
 
+    # - name: Download setup script
+    #   get_url:
+    #     url: https://raw.githubusercontent.com/frappe/bench/master/install_scripts/setup_frappe.sh
+    #     dest: /tmp/setup_frappe.sh
+    #     mode: 0755
+
     - name: Download setup script
       get_url:
-        url: https://raw.githubusercontent.com/frappe/bench/master/install_scripts/setup_frappe.sh
-        dest: /tmp/setup_frappe.sh
+        url: https://raw.githubusercontent.com/frappe/bench/master/playbooks/install.py
+        dest: /tmp/install.py
         mode: 0755
 
-    - name: Run setup script
-      raw: bash /tmp/setup_frappe.sh --setup-production
-      # async: 300
-      # poll: 0
+    # - name: Run setup script
+    #   raw: bash /tmp/setup_frappe.sh --setup-production
+    #   # async: 300
+    #   # poll: 0
+    #   become: yes
+
+    - name: dpkg --configure -a
+      raw: dpkg --configure -a
+      become: yes
+
+    - name: sudo apt-get --assume-yes install python-minimal
+      raw: apt-get --assume-yes install python-minimal
+      become: yes
+
+    - name: installation
+      raw: python install.py --production --user strella --mysql_root_password Pass@321 --admin_password Pass@321 --verbose
       become: yes
