@@ -78,6 +78,6 @@
         mode: 0755
 
     - name: installation
-      command: python /tmp/tmp/install.py --production --user strella --mysql_root_password Pass@321 --admin_password Pass@321 --verbose
+      command: python /tmp/install.py --production --user strella --mysql_root_password Pass@321 --admin_password Pass@321 --verbose
       become: yes
       become_user: root
