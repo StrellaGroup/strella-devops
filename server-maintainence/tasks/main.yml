@@ -62,9 +62,9 @@
     #   # poll: 0
     #   become: yes
  
-    - name: cp /tmp/tmp/install.py -f /tmp
-      raw: cp /tmp/tmp/install.py -f /tmp
-      become: yes
+    # - name: cp /tmp/tmp/install.py -f /tmp
+    #   raw: cp /tmp/tmp/install.py -f /tmp
+    #   become: yes
 
     - name: sudo apt-get --assume-yes install python-minimal
       raw: apt-get --assume-yes install python-minimal
