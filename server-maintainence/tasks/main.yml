@@ -43,6 +43,7 @@
         - supervisor
         - npm
       become: yes
+      become_user: root
 
     # - name: Download setup script
     #   get_url:
